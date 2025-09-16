@@ -1,0 +1,90 @@
+Next js setup
+----------------
+
+1) npx create-next-app (project Name)
+
+2) npx create-next-app@12 (project Name) --force //agr 12 version hoga uska step ya ha
+	Typescript --> No
+	Eslint --> Yes
+	Tailwind --> Yes
+	Src-directory --> Yes
+	App Router --> Yes
+	Abas --> No
+
+3) cd (project Name)
+4) code . 
+
+-----------------------------------------
+
+Homepage ki coding hogi page.js ma 
+How to change Title
+export const metadata = {
+	title : 'Homepage'	
+} 
+-------------------------------------------
+
+Next js ma page base routing hoti ha
+Agr ham layout.js ma ja kar repeating agr single nav & footer bnaye ga to easy hoga manage karna 
+we go to layout js and then in body
+
+<Nav> My Nav </Nav>
+
+<Section> {children} </Section>
+
+<Footer> My Nav </Footer>
+
+Menu ka liye ham 
+import {Link} from "Next / Link"
+
+Hum map ma button ko color kese da gen
+we use ternary operator
+{item.button ? 'bg-red-500' : 'null'}
+
+Topic Covered
+1)Ui Routing 
+2)Layout Setup
+
+Seo Ui ko html samajta ha na ka css,js
+html ka tag 2 jagha par tayar hota ha
+1) Server --> Catch ---> SSR (SERVER SIDE RENDERING)
+2) Browser --> Catch ---> CSR (CLIENT SIDE RENDERING)
+
+Agr html server sa tayar ho rha ho to wo catch ho jaye ga aisa hi browser ka sath hoga
+hame kese pata chale ga html kha tayar ho rha ha server par ya browser ma
+website ma sa koi word copy karo then view page source ma dekho
+
+If you not found then html browser par tayar ho rha ha
+agr mil gya to server par 
+
+Mila to --> server par tayar ho rha ha html
+Nhi Mila to --> Browser par tayar ho rha ha html
+Agr aap na apni website seo friendly bnani ha to apko apna html tag server par catch karwana hoga and usko view page source ma find kar sakte ho
+
+agr ham koi component bnate ha home ka name sa aur usko dikahana chahate ha frontpage par to hompage ma ja kar import karen ga and iss ma ../ ya lagane ki need nhi hogi bas iss sa kam chal jaye ga @/
+
+import Home from @/component/Home
+
+export const metadata = {
+	title : "Homepage"
+}
+
+const Hommpage = ()=> {
+	return <Home />
+}
+export default Homepage
+Routing file alag hogi aap ma and component file alag
+App folder ma routing
+Component ma UI
+
+ab ham use client use kar sakte ha 
+'use client'
+import React,{useState} from 'react'
+
+Now ham na layout ko control karen ga with { usePathname } karen ya client side ui dikaye ga 
+ab ham component ma layout.js ki file bnahe ga and sara code of nav/section/footer wha dal denge then jo phale wala layout tha usko ham 
+<Layout>
+	{children}
+</Layout>
+
+iske elawa new layout.js jo bnahi hogi new file usma aap { usePathname } import karo ga 
+and iske upper ma 'use client '

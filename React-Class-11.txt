@@ -1,0 +1,153 @@
+📒 Class 11 — React: Array & Object Destructuring
+---
+1. Ordinary Array Access (Old Way)
+
+Ye method sahi nhi hai kyunki hume indexing yaad rakhni padti hai,
+aur pata nahi chalta kaunsa data kis cheez ka hai.
+Example
+const x = ["person", "math"];
+console.log(x[0], x[1]);
+
+Array Destructuring (Better Way)
+---
+
+Array ke values ko directly variables me assign kar dete hain.
+const [fullName, subject] = ["Shan", "Math"];
+console.log(fullName, subject); // output ----> Shan Math
+
+✅ Pros:
+---
+
+Name change kar sakte ho (variable ka naam apna rakh sakte ho).
+
+Easy to read.
+
+⚠ Note:
+Array me position matter karti hai.
+Agar index change karoge, data galat variable me chala jayega.
+3. Ordinary Object Access (Old Way)
+---------------------------------
+const student = {
+  name: "Shan",
+  roll: 2,
+  subject: "Math"
+};
+
+console.log(student.name, student.roll, student.subject);
+
+4. Object Destructuring (Better Way)
+---------------------------------
+const { name, roll, subject } = {
+  name: "Shan",
+  roll: 2,
+  subject: "Math"
+};
+
+console.log(name, roll, subject); // output --> Shan 2 Math
+
+✅ Pros:
+
+Sequence matter nahi karti (order change kar sakte ho).
+
+Sirf property name match hona chahiye.
+
+⚠ Note:
+Object me variable ka naam property name ke same hona chahiye.
+5. Name Conflict / Duplicate Variable Problem
+---
+Agar variable pehle se define hai to error aa sakta hai.
+const name = "Old Name";
+
+const { name: fullName, roll: rollNo, subject: sub } = {
+  name: "Shan",
+  roll: 2,
+  subject: "Math"
+};
+
+console.log(fullName, rollNo, sub); output // Shan 2 Math
+✅ Solution:  iss case ha ham alias define karen ga jab tak duplicasi ki problem na aaye
+same agr array ma define hoga wha bi ham aisa hi karen ga (name: fullName).
+
+6. Nested Object Destructuring
+----------------------------
+const school = {
+  one: {
+    english: "Asif",
+    class: 3
+  },
+  two: {
+    english: "Atif",
+    class: 8
+  }
+};
+
+// Normal access:
+console.log(school.one.english); // Asif
+
+// Destructuring:
+const { one: { english }, two: { english: twoEnglish } } = school;
+console.log(english, twoEnglish); // Asif Atif
+
+7. Simple Summary
+------------------
+Array Destructuring:
+const [name, roll] = ["Shan", 21];
+
+Object Destructuring:
+const { name, roll } = { name: "Shan", roll: 21 };
+if you don't understand you can see code
+kya ya samaaj arha ha kya kis sa related ho to iske liye ham array destructure use karen ga.
+
+  const name = ['shan', 21];
+  console.log(name);
+
+  Isko kehte ha array destructure karna
+
+  const [name, roll] = ['zeeshan', 21]
+  console.log(name, roll);
+
+  Ordinary Object
+ 
+  const student = {
+    name : "shan",
+    city : "Hyderabad",
+    class: 12
+  }
+ 
+  console.log(student);
+
+  Object destructure
+
+  const {name, city, classs} = {
+    name : "shan",
+    city : "Hyderabad",
+    classs: 12
+  }
+
+  console.log(name, city, classs)
+
+  const {one : {teacher}, two : {teacher: classTwoeacher}}  = {
+    one : {
+      teacher : "asif",
+      teacherClasss : 5
+    },
+
+    two : {
+      teacher : "atif",
+      teacherClasss : 3
+    }
+  }
+
+  console.log(classTwoeacher);
+
+  agr same name ho to ham alias dan ge
+
+  const name = "shan"
+
+  const {name : fullname, classs, subject} = {
+    name : "ali",
+    classs : 2,
+    subject : "math"
+  }
+
+  console.log(fullname, classs, subject);

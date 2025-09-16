@@ -1,0 +1,46 @@
+Class 13 ( React Events & useState Hook )
+---
+Events in js / work in react
+onClick( )  --> wese is event ko property bolen ga raect ma
+onInput( )
+onMouseOver( )
+onMouseOut( )
+OnDoubleClick( )
+
+Agr kise condition ma apko hide karna ha to aap && use kare
+
+Agr dono condition ma apko dikhana ha hide ho ya  show ho phir use karna ha ternary.
+
+react ma kabhi bi apne userinterface ko conditionaly render kar rhe ho to normal yad rakhna jo constatnt hoga wo ordinary nhi hona chahiye
+const show = true -->  yha baat is ki ho rhi ha
+<div>
+	{show  \&\&  <p> hi </p>}
+</div>
+
+yha ham array destructure kare ga useState sa because ya array return karta  ha
+const [show , setShow] = useState(false)
+
+useState kya ha ya hook ka predefined ka function ha
+
+iss ma aik masla ha agr ham static value dete ha like ( true / false) to ya aik bar dikhe ga to ham dynamic value da ga ! iske sath.
+
+useState -- > locally store data
+
+redux ---> globally store data  (isko ham download karte ha )
+
+jo aap useState ma rakhte ho na wo apke phale wale index constant ma jaye ga aur kise ko change karna ha wo second ma aaye ga
+for example
+const App = () => {
+ const [fontSize , setFontSize] = useState(40)
+
+ 	return(
+ 		<div>
+ 			<h1 style = {{ fontSize : fontSize, color : fontSize === ? 'red' : 'blue'}}>SHAN </h1>
+
+ 			<button onClick = {()= > {setFontSize(fontSize === 40 ? 100: 40)}> change </button>
+ 		</div>
+ 	)
+
+
+
+}

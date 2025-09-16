@@ -1,0 +1,115 @@
+**Class 12 — React: useState & React Hooks
+Rendering aur Condition lagana (Show/Hide karna)**
+---
+Jab hum React me koi cheez render karte hain (dikhate hain), to hum condition laga sakte hain ke usko dikhaye ya chhupaye.
+
+const show = false;
+<h1>Shan</h1>
+{ show && <p>This is para</p> }
+
+Agar show true hoga to paragraph dikhega, agar false hoga to paragraph hide rahega.
+
+Aise bhi likh sakte hain:
+
+{ show && <p>This is para</p> || <p>This is another para</p> }
+
+But usually && operator better hota hai.
+
+React me hum &&, || ya ternary operator bhi use karte hain:
+x === 10 ? "success" : "failed"
+
+Jab bhi React me JavaScript likhna ho JSX ke andar, to {} braces zaroor lagana hota hai.
+
+2. Button Events aur Call by Value
+---
+Button par event lagana:
+
+<button onClick={demo}>Click</button>
+
+const demo = () => {
+  console.log("Hi...");
+}
+
+Agar function ko parameters ke saath call karna ho, to direct call na karo warna wo phale hi execute ho jayega:
+
+<button onClick={demo(4, 6)}>Click</button> // Ye galat hai, demo turant run ho jayega
+Iska sahi tareeka:
+
+<button onClick={() => demo(4, 6)}>Click</button>
+
+3. Problem with ordinary variables and React useState ka solution
+---
+Agar hum normal variable (let, var, const) se condition bana kar component show/hide karen, to wo reactively change nahi hota.
+
+React useState hook se hum live (reactive) state bana sakte hain, jisme change hone par UI automatically update hota hai.
+
+4. React Hooks kya hain?
+---
+Hooks React ke predefined functions hote hain jo special kaam ke liye use hote hain.
+
+Hooks ka naam hamesha use se start hota hai, jese:
+
+useState
+useEffect
+useMemo
+useRef
+
+React me already kuch hooks built-in hote hain, aur jab ham libraries install karte ha usme bi  hooks mil sakte hain. wo external hook hote ha
+
+5. useState ka basic use
+---
+useState locally data store karta hai.
+
+Jab data change hota hai, to UI re-render hota hai.
+
+useState ko import karna padta hai:
+
+import { useState } from 'react';
+
+const App = () => {
+  const show = useState(false);
+  console.log(show);  // Ye array return karega [value, setValue]
+
+  return (
+    <div>
+      <h1>Shan</h1>
+    </div>
+  );
+}
+Hum array destructuring kar ke use karte hain (jo class 11 me padha tha):
+
+const [show, setShow] = useState(false);  // false hone par paragraph hidden rahega
+
+return (
+  <div>
+    <h1>Shan</h1>
+    { show && <p>This is para</p> }
+  </div>
+);
+6. Button se state change karna aur re-render hona
+---
+const App = () => {
+  const [show, setShow] = useState(true);  // Initially paragraph dikhega
+
+  const demo = () => {
+    setShow(false);  // Click karne pe paragraph hide ho jayega
+  }
+
+  return (
+    <div>
+      <h1>Shan</h1>
+      { show && <p>This is para</p> }
+      <button onClick={demo}>Click</button>
+    </div>
+  );
+}
+Jab setShow(false) call hota hai, to React component dobara re-render hota hai, aur UI updated dikhata hai.
+
+render ka matlab hai component tayar karna, aur re-render matlab dobara tayar karna jab state change ho.
+
+7. Agar toggle karna ho (show/hide bar bar karna)
+---
+const demo = () => {
+  setShow(!show);  // Agar show true hai to false kare, false hai to true
+}
+Yeh sab React ka bohat basic aur important concept hain jo aapko ache se samajhna hoga!
